@@ -20,10 +20,9 @@ public interface StudentService {
     /**Add commentMore actions
      * Retrieves all students, optionally filtered by age.
      *
-     * @param age the age to filter students by (optional)
      * @return a list of StudentDTO objects representing the students
      */
-    List<StudentDTO> getAllStudents(Integer age);
+    List<StudentDTO> getAllStudents();
 
     /**Add commentMore actions
      * Retrieves a student by their ID.
