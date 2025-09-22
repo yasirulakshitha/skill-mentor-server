@@ -1,16 +1,18 @@
 package com.skillmentor.root.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.OneToMany;
+
 import lombok.Data;
 
 
@@ -34,7 +36,12 @@ public class ClassRoomEntity {
     @Column(name = "enrolled_student_count")
     private Integer enrolledStudentCount;
 
-    @OneToMany(mappedBy = "classRoomEntity", fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name="mentor_classroom",
+            joinColumns = @JoinColumn(name= "class_room_id"),
+            inverseJoinColumns = @JoinColumn(name="mentor_id")
+    )
     private List<MentorEntity> mentorEntities = new ArrayList<>();
 
     public ClassRoomEntity() {
