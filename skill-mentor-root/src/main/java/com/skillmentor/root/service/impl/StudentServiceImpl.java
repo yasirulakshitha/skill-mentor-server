@@ -18,6 +18,8 @@ import java.util.Optional;
 public class StudentServiceImpl implements StudentService {
 
 
+    @Autowired
+    StudentRepository studentRepository;
 
     @Override
     public StudentDTO createStudent(StudentDTO studentDTO) {
@@ -27,7 +29,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-        public List<StudentDTO> getAllStudents(List<String> addresses, List<Integer> ages) {
+        public List<StudentDTO> getAllStudents(List<String> addresses, List<Integer> ages,List<String> firstNames) {
             final List<StudentEntity> studentEntities = studentRepository.findAll();
             return studentEntities
                     .stream()
@@ -40,10 +42,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentDTO getStudentById(Integer id) {
             Optional<StudentEntity> studentEntity = studentRepository.findById(id);
-            if(studentEntity.isPresent()){
-                return StudentEntityDTOMapper.map(studentEntity.get());
-            }
-            return null;
+           return StudentEntity.map(studentEntityDtoMapper::map).orElse(null);
     }
 
     @Override

@@ -26,9 +26,10 @@ public class StudentController {
     @GetMapping()
     public ResponseEntity<List<StudentDTO>> getAllStudents(
             @RequestParam(required = false) List<String> address,
-            @RequestParam(required = false) List<Integer> ages
+            @RequestParam(required = false) List<Integer> ages,
+            @RequestParam(required = false) List<String> firstNames
     ){
-        List<StudentDTO> studentDTOS = studentService.getAllStudents(address, ages);
+        List<StudentDTO> studentDTOS = studentService.getAllStudents(address, ages,firstNames);
         return new ResponseEntity<>(studentDTOS, HttpStatus.OK);
     }
 

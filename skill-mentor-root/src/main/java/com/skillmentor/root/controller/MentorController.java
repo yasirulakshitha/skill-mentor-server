@@ -18,6 +18,7 @@ public class MentorController {
     @Autowired
     private MentorService mentorService;
 
+
     @PostMapping()
     public ResponseEntity<MentorDTO> createMentor(@RequestBody MentorDTO mentorDTO) {
         mentorService.createMentor(mentorDTO);
@@ -25,8 +26,10 @@ public class MentorController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<MentorDTO>> getAllMentors() {
-        List<MentorDTO> mentorDTOS = mentorService.getAllMentors();
+    public ResponseEntity<List<MentorDTO>> getAllMentors(
+            @RequestParam(required = false) List<String> firstNames,
+            @RequestParam(required = false) List<String>  subjects) {
+        List<MentorDTO> mentorDTOS = mentorService.getAllMentors(firstNames, subjects);
         return new ResponseEntity<>(mentorDTOS, HttpStatus.OK);
     }
 
