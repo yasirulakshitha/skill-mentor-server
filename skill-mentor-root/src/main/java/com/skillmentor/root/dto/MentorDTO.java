@@ -1,5 +1,6 @@
 package com.skillmentor.root.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -14,13 +15,15 @@ public class MentorDTO {
     private String profession;
     private String subject;
     private String qualification;
+    @JsonIgnore
+    private ClassRoomDTO classRoomDTO;
     private Integer classRoomId;
 
     public MentorDTO() {
     }
 
     public MentorDTO(Integer mentorId, String firstName, String lastName, String address, String email,
-                     String title, String profession, String subject, String qualification,Integer classRoomId) {
+                     String title, String profession, String subject, String qualification,ClassRoomDTO classRoomDTO,Integer classRoomId) {
         this.mentorId = mentorId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -30,6 +33,7 @@ public class MentorDTO {
         this.profession = profession;
         this.subject = subject;
         this.qualification = qualification;
+        this.classRoomDTO = classRoomDTO;
         this.classRoomId = classRoomId;
     }
 
