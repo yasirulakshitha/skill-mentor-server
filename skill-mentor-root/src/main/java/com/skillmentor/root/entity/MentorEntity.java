@@ -3,15 +3,14 @@ package com.skillmentor.root.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 
@@ -47,13 +46,13 @@ public class MentorEntity {
     @Column(name = "qualification")
     private String qualification;
 
-    @ManyToMany(mappedBy = "mentorEntities", fetch = FetchType.EAGER)
-    private List<ClassRoomEntity> classRoomEntities = new ArrayList<>();
+    @OneToMany(mappedBy = "mentorEntity")
+    private List<SessionEntity> sessionEntities;
 
     public MentorEntity() {}
 
     public MentorEntity(Integer mentorId, String firstName, String lastName, String address, String email,
-                        String title, String profession, String subject, String qualification,List<ClassRoomEntity> classRoomEntities) {
+                        String title, String profession, String subject, String qualification,List<SessionEntity> sessionEntities) {
         this.mentorId = mentorId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -63,7 +62,7 @@ public class MentorEntity {
         this.profession = profession;
         this.subject = subject;
         this.qualification = qualification;
-        this.classRoomEntities = classRoomEntities;
+        this.sessionEntities = sessionEntities;
     }
 
 
