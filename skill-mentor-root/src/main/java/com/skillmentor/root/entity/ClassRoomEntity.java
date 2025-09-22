@@ -27,8 +27,6 @@ public class ClassRoomEntity {
     @Column(name = "enrolled_student_count")
     private Integer enrolledStudentCount;
 
-    @Column(name = "mentor_id")
-    private Integer mentorId;
 
     public ClassRoomEntity() {
     }
@@ -38,7 +36,7 @@ public class ClassRoomEntity {
         this.title = name;
         this.sessionFee = sessionFee;
         this.enrolledStudentCount = enrolledStudentCount;
-        this.mentorId = mentorId;
+
     }
 
 }
