@@ -15,6 +15,7 @@ import lombok.Data;
 public class MentorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "mentor_id")
     private Integer mentorId;
     @Column(name = "first_name")
     private String firstName;
