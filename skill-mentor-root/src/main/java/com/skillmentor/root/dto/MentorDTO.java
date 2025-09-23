@@ -10,6 +10,7 @@ public class MentorDTO {
     private String address;
     private String email;
     private String title;
+    private Double sessionFee;
     private String profession;
     private String subject;
     private String phoneNumber;
@@ -18,13 +19,14 @@ public class MentorDTO {
 
     public MentorDTO() {}
 
-    public MentorDTO(Integer mentorId, String firstName, String lastName, String address, String email,
+    public MentorDTO(Integer mentorId, String firstName, String lastName, String address, String email, String sessionFee,
                      String title, String profession, String subject, String qualification, Integer classRoomId, String phoneNumber) {
         this.mentorId = mentorId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.email = email;
+        this.sessionFee = Double.parseDouble(sessionFee);
         this.title = title;
         this.profession = profession;
         this.subject = subject;
