@@ -28,6 +28,7 @@ public class SessionDTOEntityMapper {
         sessionDTO.setStudentDTO(StudentEntityDTOMapper.map(sessionEntity.getStudentEntity()));
         sessionDTO.setClassRoomDTO(ClassRoomEntityDTOMapper.map(sessionEntity.getClassRoomEntity()));
         sessionDTO.setMentorDTO(MentorEntityDTOMapper.map(sessionEntity.getMentorEntity()));
+        sessionDTO.setTopic(sessionEntity.getTopic());
         sessionDTO.setStartTime(sessionEntity.getStartTime());
         sessionDTO.setEndTime(sessionEntity.getEndTime());
         return sessionDTO;
